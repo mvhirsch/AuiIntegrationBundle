@@ -11,6 +11,7 @@ Use `base.html.twig`
 
 ToDo
 ----------------
+* Template as Annotation
 * Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annoation-Extra?)
 * AUI-Page Pagerfanta Integration
 * ApplicationHeader / MenuBundle
