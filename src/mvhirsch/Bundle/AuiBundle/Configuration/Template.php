@@ -37,13 +37,4 @@ class Template extends SymfonyTemplate
 
         $this->pageLayout = $layout;
     }
-
-//    public function getVars()
-//    {
-//        $this->vars = parent::getVars();
-//        $this->vars[] = 'pageLayout';
-////        var_dump($this->vars); die();
-////        $this->vars['AuiPageLayout'] = $this->pageLayout = array('test');
-//        return $this->vars; //array('AuiPageLayout' => $this->pageLayout));
-//    }
 }

@@ -38,35 +38,10 @@ class TemplateListener implements EventSubscriberInterface
             return;
         }
 
-////        var_dump(!$configuration->getTemplate()); die();
-////        var_dump($configuration->getTemplatea()); die();
-//        if (get_class($configuration) === "Symfony\Bundle\FrameworkBundle\Templating\TemplateReference") {
-//            throw new \Exception("wtf?");
-//        }
-//        if (!$configuration->getTemplate()) {
-//            $guesser = $this->container->get('sensio_framework_extra.view.guesser');
-//            $configuration->setTemplate($guesser->guessTemplateName($controller, $request, $configuration->getEngine()));
-//        }
-
-//        $request->attributes->set('_template', $configuration->getTemplate());
-//        $request->attributes->set('_template_vars', $configuration->getVars());
-//        $request->attributes->set('_template_streamable', $configuration->isStreamable());
-
-//        var_Dump($request->attributes); die('ok');
-        $aui = ['aui_page_layout' => $configuration->getPageLayout()];
-        $request->attributes->set('_template_vars_aui', $aui);
-
-        // all controller method arguments
-//        if (!$configuration->getVars()) {
-//            $r = new \ReflectionObject($controller[0]);
-//
-//            $vars = array();
-//            foreach ($r->getMethod($controller[1])->getParameters() as $param) {
-//                $vars[] = $param->getName();
-//            }
-//
-//            $request->attributes->set('_template_default_vars', $vars);
-//        }
+        if (get_class($configuration) === 'mvhirsch\Bundle\AuiBundle\Configuration\Template') {
+            $aui = ['aui_page_layout' => $configuration->getPageLayout()];
+            $request->attributes->set('_template_vars_aui', $aui);
+        }
     }
 
     public function onKernelView(GetResponseForControllerResultEvent $event)
