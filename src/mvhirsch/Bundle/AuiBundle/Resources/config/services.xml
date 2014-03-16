@@ -17,4 +17,16 @@
         </service>
     </services>
     -->
+
+    <parameters>
+        <parameter key="mvhirsch_aui.view.listener.class">mvhirsch\Bundle\AuiBundle\EventListener\TemplateListener</parameter>
+        <!--<parameter key="sensio_framework_extra.view.listener.class">mvhirsch\Bundle\AuiBundle\EventListener\TemplateListener</parameter>-->
+    </parameters>
+
+    <services>
+        <service id="mvhirsch_aui.view.listener" class="%mvhirsch_aui.view.listener.class%">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
 </container>
