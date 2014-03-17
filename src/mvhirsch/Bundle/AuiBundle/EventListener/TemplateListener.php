@@ -38,7 +38,15 @@ class TemplateListener implements EventSubscriberInterface
         }
 
         if (get_class($configuration) === 'mvhirsch\Bundle\AuiBundle\Configuration\Template') {
-            $aui = ['page_layout' => $configuration->getLayout()];
+            if ('focused' === $configuration->getLayout() && null === $configuration->getFocusedSize()) {
+                throw new \LogicException('Must set @Template::FocusedSize');
+            }
+
+            $aui = array(
+                'page_layout'   => $configuration->getLayout(),
+                'focused_size'  => $configuration->getFocusedSize(),
+            );
+
             $request->attributes->set('_template_vars_aui', $aui);
         }
     }

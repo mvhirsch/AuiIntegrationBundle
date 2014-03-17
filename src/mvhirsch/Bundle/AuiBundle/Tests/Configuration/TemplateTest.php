@@ -44,8 +44,25 @@ class TemplateTest extends \PHPUnit_Framework_TestCase
      * @test
      * @expectedException \BadMethodCallException
      */
-    public function failOnInvalidLayout()
+    public function setLayoutFailsOnInvalidLayout()
     {
         $this->SUT->setLayout('invalid');
+    }
+
+    /**
+     * @test
+     */
+    public function setFocusedSize()
+    {
+        $this->SUT->setFocusedSize('large');
+        $this->assertSame('large', $this->SUT->getFocusedSize());
+    }
+
+    /**
+     * @test
+     */
+    public function setFocusedSizeFailsOnInvalidSize()
+    {
+        $this->SUT->setFocusedSize('invalid');
     }
 }

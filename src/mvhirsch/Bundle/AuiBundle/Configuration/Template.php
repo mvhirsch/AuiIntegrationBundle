@@ -24,6 +24,8 @@ class Template extends SymfonyTemplate
      */
     protected $contentLayout = 'content'; // content-only
 
+    protected $focusedSize = null;
+
     public function getLayout()
     {
         return $this->pageLayout;
@@ -31,10 +33,20 @@ class Template extends SymfonyTemplate
 
     public function setLayout($layout)
     {
-        if (!in_array($layout, array('fluid', 'fixed', 'hybrid'))) {
+        if (!in_array($layout, array('fluid', 'fixed', 'hybrid', 'focused'))) {
             throw new \BadMethodCallException(sprintf('Page layout must be on of these: fluid, fixed or hybrid'));
         }
 
         $this->pageLayout = $layout;
+    }
+
+    public function getFocusedSize()
+    {
+        return $this->focusedSize;
+    }
+
+    public function setFocusedSize($size)
+    {
+        $this->focusedSize = $size;
     }
 }

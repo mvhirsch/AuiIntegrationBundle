@@ -33,6 +33,19 @@ class TemplateListenerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($attributes->get('_template_vars_aui'));
         $this->assertSame('fluid', $attributes->get('_template_vars_aui')['page_layout']);
     }
+
+    /**
+     * @test
+     * @expectedException \LogicException
+     */
+    public function setLayoutToFocusedWillFailWithoutSize()
+    {
+        $kernel = $this->getMock('Symfony\Component\HttpKernel\HttpKernelInterface');
+        $event = new FilterControllerEvent($kernel, array(new TestController(), 'execute'), $this->request, HttpKernelInterface::MASTER_REQUEST);
+
+        $this->request->attributes->set('_template', new Template(array('layout' => 'focused')));
+        $this->listener->onKernelController($event);
+    }
 }
 
 /**
