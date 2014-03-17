@@ -10,7 +10,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/hello/{name}")
-     * @Template(vars={"name"})
+     * @Template(vars={"name"}, layout="fluid")
      */
     public function indexAction($name)
     {

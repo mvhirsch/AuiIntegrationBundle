@@ -31,7 +31,7 @@ class TemplateListenerTest extends \PHPUnit_Framework_TestCase
 
         $attributes = $this->request->attributes;
         $this->assertNotNull($attributes->get('_template_vars_aui'));
-        $this->assertSame('fluid', $attributes->get('_template_vars_aui')['aui_page_layout']);
+        $this->assertSame('fluid', $attributes->get('_template_vars_aui')['page_layout']);
     }
 }
 

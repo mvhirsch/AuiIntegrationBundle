@@ -24,9 +24,9 @@ class TemplateTest extends \PHPUnit_Framework_TestCase
      * @group Configuration
      * @group AUI
      */
-    public function getDefaultPageLayout()
+    public function getDefaultLayout()
     {
-        $this->assertSame('fluid', $this->SUT->getPageLayout());
+        $this->assertSame('fluid', $this->SUT->getLayout());
     }
 
     /**
@@ -34,18 +34,18 @@ class TemplateTest extends \PHPUnit_Framework_TestCase
      * @group Configuration
      * @group AUI
      */
-    public function setPageLayout()
+    public function setLayout()
     {
-        $this->SUT->setPageLayout('hybrid');
-        $this->assertSame('hybrid', $this->SUT->getPageLayout());
+        $this->SUT->setLayout('hybrid');
+        $this->assertSame('hybrid', $this->SUT->getLayout());
     }
 
     /**
      * @test
      * @expectedException \BadMethodCallException
      */
-    public function failOnInvalidPageLayout()
+    public function failOnInvalidLayout()
     {
-        $this->SUT->setPageLayout('invalid');
+        $this->SUT->setLayout('invalid');
     }
 }

@@ -33,13 +33,12 @@ class TemplateListener implements EventSubscriberInterface
         }
 
         $request = $event->getRequest();
-
         if (!$configuration = $request->attributes->get('_template')) {
             return;
         }
 
         if (get_class($configuration) === 'mvhirsch\Bundle\AuiBundle\Configuration\Template') {
-            $aui = ['aui_page_layout' => $configuration->getPageLayout()];
+            $aui = ['page_layout' => $configuration->getLayout()];
             $request->attributes->set('_template_vars_aui', $aui);
         }
     }
@@ -56,7 +55,7 @@ class TemplateListener implements EventSubscriberInterface
         }
 
         // it works!
-        $parameters['aui'] = ['page_layout' => $request->attributes->get('_template_vars_aui')['aui_page_layout']];
+        $parameters['aui'] = ['page_layout' => $request->attributes->get('_template_vars_aui')['page_layout']];
 
         if (!$template = $request->attributes->get('_template')) {
             return $parameters;

@@ -24,12 +24,12 @@ class Template extends SymfonyTemplate
      */
     protected $contentLayout = 'content'; // content-only
 
-    public function getPageLayout()
+    public function getLayout()
     {
         return $this->pageLayout;
     }
 
-    public function setPageLayout($layout)
+    public function setLayout($layout)
     {
         if (!in_array($layout, array('fluid', 'fixed', 'hybrid'))) {
             throw new \BadMethodCallException(sprintf('Page layout must be on of these: fluid, fixed or hybrid'));

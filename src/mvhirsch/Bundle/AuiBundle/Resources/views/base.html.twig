@@ -3,12 +3,44 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title 'Welcome!' %}</title>
-        {% block stylesheets '' %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body {% block aui_page_layout '' %}>
 
-        {% block aui_body '' %}
-        {% block javascripts %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('bundles/mvhirschaui/aui/css/aui-all.css') }}" media="all" />
+        <link rel="icon" type="image/png" href="{{ asset('bundles/mvhirschaui/aui/css/fav_on_16.png') }}" />
+
+        {% block stylesheets '' %}
+    </head>
+
+    {% if aui.page_layout is defined %}
+        <body class="aui-layout aui-page-{{ aui.page_layout }}" data-aui-version="5.4.2">
+    {% else %}
+        <body class="aui-layout aui-page">
+    {% endif %}
+
+        <div id="page">
+            <header id="header" role="banner"></header>
+            <section id="content" role="main">
+                <header class="aui-page-header">
+                    <div class="aui-page-header">
+                        <div class="aui-page-header-inner">
+                            <h1>Foundations</h1>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="aui-page-panel">
+                    <div class="aui-page-panel-inner">
+                        <section class="aui-page-panel-content">
+                            {% block aui_body '' %}
+                        </section>
+                    </div>
+                </div>
+
+            </section>
+            <footer id="footer" role="contentinfo"></footer>
+        </div>
+
+
+
+    {% block javascripts %}{% endblock %}
     </body>
 </html>
