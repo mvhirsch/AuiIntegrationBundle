@@ -9,6 +9,20 @@ Installation
 ----------------
 Use `base.html.twig`
 
+Change Page Layout
+-----------------
+As defined in ADG, you can use the following page layouts: fluid (default), hybrid and fixed.
+
+    use mvhirsch\Bundle\AuiBundle\Configuration\Template
+
+    [...]
+
+    /**
+     *  @Template(layout="hybrid")
+     */
+    public function AcmeIndexAction() {}
+
+
 ToDo
 ----------------
 * Template as Annotation
