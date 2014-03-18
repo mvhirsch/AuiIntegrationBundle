@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as SymfonyTemplate
  */
 class Template extends SymfonyTemplate
 {
-
     const AUI_LAYOUT_DEFAULT = 'fluid';
     const AUI_LAYOUT_FLUID = 'fluid';
     const AUI_LAYOUT_HYBRID = 'hybrid';
@@ -19,14 +18,24 @@ class Template extends SymfonyTemplate
     const AUI_FOCUSED_LAYOUT_SIZE_SMALL = 'small';
 
     /**
-     * The PageLayout by AUI.
+     * The AUI-Layout Name.
      *
      * @var string
      */
-    protected $layout = null; // default AUI Layout
+    protected $layout = null;
 
+    /**
+     * The Layout-Size on AUI-Layout "focused".
+     *
+     * @var string
+     */
     protected $focusedSize = null;
 
+    /**
+     * Returns the AUI-Layout Name.
+     *
+     * @return string
+     */
     public function getLayout()
     {
         if (null === $this->layout) {
@@ -36,20 +45,32 @@ class Template extends SymfonyTemplate
         return $this->layout;
     }
 
-    public function setLayout($layout, $test = 'string')
+    /**
+     * Sets the AUI Layout.
+     *
+     * @param string|array $layout
+     *
+     * @throws \BadMethodCallException on invalid Layout Name
+     */
+    public function setLayout($layout)
     {
         if (!is_array($layout)) {
             $layout = array($layout);
         }
 
         if (!in_array($layout[0], array('fluid', 'fixed', 'hybrid', 'focused'))) {
-            throw new \BadMethodCallException('Layout must be on of these: fluid, fixed, hybrid or focused');
+            throw new \BadMethodCallException('Layout must be: fluid, fixed, hybrid or focused');
         }
 
         $this->layout = $layout[0];
         $this->focusedSize = (isset($layout[1]) ? $layout[1] : 'large');
     }
 
+    /**
+     * Returns the Layout-Size on AUI-Layout "Focused"
+     *
+     * @return string
+     */
     public function getFocusedLayoutSize()
     {
         if (null === $this->focusedSize && 'focused' === $this->layout) {
