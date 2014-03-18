@@ -10,43 +10,52 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as SymfonyTemplate
 class Template extends SymfonyTemplate
 {
 
+    const AUI_LAYOUT_DEFAULT = 'fluid';
+    const AUI_LAYOUT_FLUID = 'fluid';
+    const AUI_LAYOUT_HYBRID = 'hybrid';
+    const AUI_LAYOUT_FOCUSED = 'focused';
+
+    const AUI_FOCUSED_LAYOUT_SIZE_LARGE = 'large';
+    const AUI_FOCUSED_LAYOUT_SIZE_SMALL = 'small';
+
     /**
      * The PageLayout by AUI.
      *
      * @var string
      */
-    protected $pageLayout = 'fluid'; // default AUI Layout
-
-    /**
-     * The ContentLayout by AUI.
-     *
-     * @var string
-     */
-    protected $contentLayout = 'content'; // content-only
+    protected $layout = null; // default AUI Layout
 
     protected $focusedSize = null;
 
     public function getLayout()
     {
-        return $this->pageLayout;
-    }
-
-    public function setLayout($layout)
-    {
-        if (!in_array($layout, array('fluid', 'fixed', 'hybrid', 'focused'))) {
-            throw new \BadMethodCallException(sprintf('Page layout must be on of these: fluid, fixed or hybrid'));
+        if (null === $this->layout) {
+            return self::AUI_LAYOUT_DEFAULT;
         }
 
-        $this->pageLayout = $layout;
+        return $this->layout;
     }
 
-    public function getFocusedSize()
+    public function setLayout($layout, $test = 'string')
     {
+        if (!is_array($layout)) {
+            $layout = array($layout);
+        }
+
+        if (!in_array($layout[0], array('fluid', 'fixed', 'hybrid', 'focused'))) {
+            throw new \BadMethodCallException('Layout must be on of these: fluid, fixed, hybrid or focused');
+        }
+
+        $this->layout = $layout[0];
+        $this->focusedSize = (isset($layout[1]) ? $layout[1] : 'large');
+    }
+
+    public function getFocusedLayoutSize()
+    {
+        if (null === $this->focusedSize && 'focused' === $this->layout) {
+            return 'large';
+        }
+
         return $this->focusedSize;
-    }
-
-    public function setFocusedSize($size)
-    {
-        $this->focusedSize = $size;
     }
 }

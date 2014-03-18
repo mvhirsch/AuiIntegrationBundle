@@ -2,6 +2,7 @@
 
 namespace mvhirsch\Bundle\AuiBundle\EventListener;
 
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -15,18 +16,22 @@ class TemplateListener implements EventSubscriberInterface
      */
     protected $container = null;
 
+    /**
+     * Constructor.
+     *
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
     /**
-     * Guesses the template name to render and its variables and adds them to
-     * the request object.
+     * Appends needed AUI template variables to Request.
      *
      * @param FilterControllerEvent $event A FilterControllerEvent instance
      */
-    public function onKernelController(\Symfony\Component\HttpKernel\Event\FilterControllerEvent $event)
+    public function onKernelController(FilterControllerEvent $event)
     {
         if (!is_array($controller = $event->getController())) {
             return;
@@ -38,19 +43,25 @@ class TemplateListener implements EventSubscriberInterface
         }
 
         if (get_class($configuration) === 'mvhirsch\Bundle\AuiBundle\Configuration\Template') {
-            if ('focused' === $configuration->getLayout() && null === $configuration->getFocusedSize()) {
+            if ('focused' === $configuration->getLayout() && null === $configuration->getFocusedLayoutSize()) {
                 throw new \LogicException('Must set @Template::FocusedSize');
             }
 
             $aui = array(
                 'page_layout'   => $configuration->getLayout(),
-                'focused_size'  => $configuration->getFocusedSize(),
+                'focused_size'  => $configuration->getFocusedLayoutSize(),
             );
 
             $request->attributes->set('_template_vars_aui', $aui);
         }
     }
 
+    /**
+     * Appends the necessary AUI template variables to engine.
+     *
+     * @param GetResponseForControllerResultEvent $event
+     * @return array
+     */
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
         $request = $event->getRequest();
@@ -62,15 +73,11 @@ class TemplateListener implements EventSubscriberInterface
             $parameters[$var] = $request->attributes->get($var);
         }
 
-        // it works!
         $parameters['aui'] = ['page_layout' => $request->attributes->get('_template_vars_aui')['page_layout']];
 
         if (!$template = $request->attributes->get('_template')) {
             return $parameters;
         }
-
-//        var_dump($request->attributes); die();
-//        $parameters['aui_page_layout'] = $
 
         if (!$request->attributes->get('_template_streamable')) {
             $event->setResponse($templating->renderResponse($template, $parameters));

@@ -10,7 +10,9 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/hello/{name}")
-     * @Template(vars={"name"}, layout="focused", focusedSize="large")
+     *
+     * // layout="{focused, large}" ??
+     * @Template(vars={"name"}, layout={"focused", "large"})
      */
     public function indexAction($name)
     {
