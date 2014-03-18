@@ -24,7 +24,12 @@ class TemplateListenerTest extends \PHPUnit_Framework_TestCase
     public function addsPageLayoutToRequest()
     {
         $kernel = $this->getMock('Symfony\Component\HttpKernel\HttpKernelInterface');
-        $event = new FilterControllerEvent($kernel, array(new TestController(), 'execute'), $this->request, HttpKernelInterface::MASTER_REQUEST);
+        $event = new FilterControllerEvent(
+            $kernel,
+            array(new TestController(), 'execute'),
+            $this->request,
+            HttpKernelInterface::MASTER_REQUEST
+        );
 
         $this->request->attributes->set('_template', new Template(array()));
         $this->listener->onKernelController($event);
@@ -40,5 +45,8 @@ class TemplateListenerTest extends \PHPUnit_Framework_TestCase
  */
 class TestController
 {
-    public function execute(Request $request) {}
+    public function execute(Request $request)
+    {
+
+    }
 }
