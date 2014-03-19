@@ -1,16 +1,22 @@
-mvhirsch/AuiBundle
-======================
+# mvhirsch/AuiBundle
 
 Integrates the Atlassian User Interface.
 Atlassian User Interface is licensed under Apache License v2.0.
 Is shipped with AUI v5.4.1.
 
-Installation
-----------------
+## Dependencies
+* DomCrawler
+* Twig
+* Symfony ~2.x (2.4)
+
+## Twig Functions
+* aui_badge(3) // generates an AUI-Badge with content "3"
+* aui_lozenge('test') // generates an AUI-Lozenge with content "test" and default type
+
+## Installation
 Use `base.html.twig`
 
-Change Page Layout
------------------
+## Change Page Layout
 As defined in ADG, you can use the following page layouts: fluid (default), hybrid and fixed.
 
     use mvhirsch\Bundle\AuiBundle\Configuration\Template
@@ -23,8 +29,7 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
     public function AcmeIndexAction() {}
 
 
-ToDo
-----------------
+## ToDo
 * Template as Annotation
 * Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annoation-Extra?)
 * AUI-Page Pagerfanta Integration
