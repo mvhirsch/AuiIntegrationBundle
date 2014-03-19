@@ -17,11 +17,6 @@ class AuiBadgeExtensionText extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->SUT = new AuiBadgeExtension();
-
-        $functions = $this->SUT->getFunctions();
-        foreach ($functions as $function) {
-            $this->assertInstanceOf('\Twig_SimpleFunction', $function);
-        }
     }
 
     /**
@@ -47,6 +42,20 @@ class AuiBadgeExtensionText extends \PHPUnit_Framework_TestCase
         $crawler = new Crawler($badge);
 
         $this->assertContains($contains, $crawler->filterXPath('//span')->text());
+    }
+
+    /**
+     * @test
+     */
+    public function registerTwigFunction()
+    {
+        $functions = $this->SUT->getFunctions();
+        foreach ($functions as $function) {
+            $this->assertInstanceOf('\Twig_SimpleFunction', $function);
+        }
+
+        $this->assertGreaterThan(0, $functions);
+        $this->assertSame('aui_badge', $functions[0]->getName());
     }
 
     /**
