@@ -46,4 +46,3 @@ class AuiBadgeExtension extends \Twig_Extension
         return 'aui_badge_extension';
     }
 }
-

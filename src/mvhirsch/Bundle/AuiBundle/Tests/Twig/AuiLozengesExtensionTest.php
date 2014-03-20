@@ -20,33 +20,59 @@ class AuiLozengesExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     */
+    public function generateADefaultLozenge()
+    {
+        $crawler = new Crawler($this->SUT->generateLozenge('test message'));
+
+        $this->assertSame('test message', $crawler->filter('span')->text());
+        $this->assertSame('aui-lozenge', $crawler->filter('span')->attr('class'));
+    }
+
+    /**
+     * @test
      *
      * @dataProvider lozengeProvider
      */
-    public function generateLozenge($text, $type, $xPath, $html)
+    public function generateLozengeSetsCorrectCssClass($type, $class)
     {
-        $this->markTestIncomplete('WIP');
-        $lozenge = $this->SUT->generateLozenge($text, $type);
-        $crawler = new Crawler($lozenge);
-
-        $this->assertSame($html, $crawler->filterXPath($xPath)->text());
-//        $this->assertSame('')
+        $crawler = new Crawler($this->SUT->generateLozenge('test message', $type));
+        $this->assertContains($class, $crawler->filter('span')->attr('class'));
     }
 
     /**
      * @test
      */
-    public function willReturnHtml()
+    public function willThrowExceptionOnInvalidType()
     {
-        $this->markTestIncomplete('how to solve HTML/NODE?');
-        $lozenge = $this->SUT->generateLozenge('message');
-        $crawler = new Crawler($lozenge);
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->SUT->generateLozenge('test message', 'invalid-type');
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider lozengeProvider
+     */
+    public function generateSubtledLozenge($type, $class)
+    {
+        $crawler = new Crawler($this->SUT->generateLozenge('test message', $type, true));
+        $this->assertContains('aui-lozenge-subtle', $crawler->filter('span')->attr('class'));
     }
 
     /**
      * @test
      */
-    public function registerTwigFunction()
+    public function willReturnOnlySpanNode()
+    {
+        $crawler = new Crawler($this->SUT->generateLozenge('message'));
+        $this->assertCount(1, $crawler->filterXPath('//body')->children());
+    }
+
+    /**
+     * @test
+     */
+    public function registersTwigFunction()
     {
         $functions = $this->SUT->getFunctions();
         foreach ($functions as $function) {
@@ -63,9 +89,11 @@ class AuiLozengesExtensionTest extends \PHPUnit_Framework_TestCase
     public function lozengeProvider()
     {
         return array(
-            array('message', null, '/span', 'message'),
-            array('error-message', 'error', '/span.aui-lozenge-error', 'error-message'),
-            array('success-message', 'success', '/span.aui-lozenge-success', 'success-message'),
+            array('error', 'aui-lozenge-error'),
+            array('success', 'aui-lozenge-success'),
+            array('current', 'aui-lozenge-current'),
+            array('complete', 'aui-lozenge-complete'),
+            array('moved', 'aui-lozenge-moved'),
         );
     }
 }

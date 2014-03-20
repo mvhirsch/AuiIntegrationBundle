@@ -2,17 +2,53 @@
 
 namespace mvhirsch\Bundle\AuiBundle\Twig;
 
+/**
+ * Generates a Lozenge (AUI).
+ *
+ * @example aui_lozenge('message', 'complete', true)
+ *
+ * @author mvhirsch <michael.vhirsch@gmail.com>
+ */
 class AuiLozengesExtension extends \Twig_Extension
 {
-    public function generateLozenge($text, $type = null)
+    /**
+     * The allowed types for a lozenge.
+     *
+     * @var array
+     */
+    protected $allowedTypes = array('success', 'error', 'current', 'complete', 'moved');
+
+    /**
+     * Generates the Lozenge defined in AUI.
+     *
+     * @param string $text   The message text in the Lozenge.
+     * @param string $type   The type of the lozenge. Allowed: success, error, current, complete and moved.
+     * @param bool   $subtle Subtle it?
+     *
+     * @throws \InvalidArgumentException On invalid type.
+     *
+     * @return string
+     */
+    public function generateLozenge($text, $type = null, $subtle = false)
     {
-        if (null !== $type) {
-            return sprintf('<span class="aui-lozenge aui-lozenge-%s">%s</span>', $type, $text);
+        if (null !== $type && !in_array($type, $this->allowedTypes)) {
+            $message = sprintf('AUI Lozenge allowes only: %s - got "%s"', join(', ', $this->allowedTypes), $type);
+            throw new \InvalidArgumentException($message);
         }
 
-        return sprintf('<span class="aui-lozenge">%s</span>', $text);
+        $classes = trim(sprintf(
+            'aui-lozenge %s %s',
+            (null !== $type) ? 'aui-lozenge-' . $type : null,
+            ($subtle) ? 'aui-lozenge-subtle' : null
+        ));
+
+        return sprintf('<span class="%s">%s</span>', $classes, $text);
     }
 
+    /**
+     * {@inheritDoc}
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -20,6 +56,10 @@ class AuiLozengesExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string
+     */
     public function getName()
     {
         return 'aui_lozenges_extension';
