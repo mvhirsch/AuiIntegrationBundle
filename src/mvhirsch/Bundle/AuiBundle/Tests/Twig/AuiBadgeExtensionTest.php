@@ -22,14 +22,10 @@ class AuiBadgeExtensionText extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function willReturnHtml()
+    public function willReturnOnlySpanNode()
     {
-        $this->markTestIncomplete('How did I solve that?');
-        $badge = $this->SUT->generateBadge(3);
-        $crawler = new Crawler($badge);
-
-        $this->assertCount(1, $crawler->filter(''), 'Contains only one element');
-        $this->assertCount(1, $crawler->filter('span.aui-badge'), 'Contains span.aui-badge');
+        $crawler = new Crawler($this->SUT->generateBadge(3));
+        $this->assertCount(1, $crawler->filterXPath('//body')->children(), 'Contains only one element');
     }
 
     /**
@@ -38,9 +34,7 @@ class AuiBadgeExtensionText extends \PHPUnit_Framework_TestCase
      */
     public function generateBadge($input, $contains)
     {
-        $badge = $this->SUT->generateBadge($input);
-        $crawler = new Crawler($badge);
-
+        $crawler = new Crawler($this->SUT->generateBadge($input));
         $this->assertContains($contains, $crawler->filterXPath('//span')->text());
     }
 
