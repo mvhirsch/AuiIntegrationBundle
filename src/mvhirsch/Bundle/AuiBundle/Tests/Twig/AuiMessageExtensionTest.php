@@ -61,17 +61,37 @@ class AuiMessageExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function generateMessageAddsIcon()
     {
-        $this->markTestIncomplete('WIP');
         $crawler = new Crawler($this->SUT->generateMessage('error', 'error title', 'error message'));
-
         $span = $crawler->filterXPath('//body/div/p[1]/span');
+
         $this->assertCount(1, $span);
         $this->assertSame('aui-icon icon-error', $span->attr('class'));
     }
 
+    /**
+     * @test
+     * @depends willReturnValidHtml
+     */
     public function defaultMessageContainsIconGeneric()
     {
+        $crawler = new Crawler($this->SUT->generateMessage('default', 'default title', 'a default message'));
+        $span = $crawler->filterXPath('//body/div/p[1]/span');
 
+        $this->assertCount(1, $span);
+        $this->assertSame('aui-icon', $span->attr('class'));
+    }
+
+    /**
+     * @test
+     * @depends willReturnValidHtml
+     */
+    public function generateMessageSurroundsTitleWithStrong()
+    {
+        $crawler = new Crawler($this->SUT->generateMessage('default', 'my strong title', 'message'));
+        $strong = $crawler->filterXPath('//body/div/p[1]/strong');
+
+        $this->assertCount(1, $strong, 'Title is surrounded with <strong>');
+        $this->assertSame('my strong title', $strong->text());
     }
 
     /**

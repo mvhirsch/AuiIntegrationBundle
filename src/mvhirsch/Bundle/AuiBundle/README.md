@@ -12,6 +12,7 @@ Is shipped with AUI v5.4.1.
 ## Twig Functions
 * aui_badge(3) // generates an AUI-Badge with content "3"
 * aui_lozenge('test') // generates an AUI-Lozenge with content "test" and default type
+* aui_message('error', 'an error occured', 'there was an error while saving the form') // generates an AUI-Message of type error
 
 ## Installation
 Use `base.html.twig`
@@ -34,3 +35,5 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
 * Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annoation-Extra?)
 * AUI-Page Pagerfanta Integration
 * ApplicationHeader / MenuBundle
+* Rename AuiBundle -> AuiIntegrationBundle
+* Refactor directory structure (acutally its a full symfony project)

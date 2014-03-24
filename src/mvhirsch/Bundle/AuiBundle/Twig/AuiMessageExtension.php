@@ -19,27 +19,25 @@ class AuiMessageExtension extends \Twig_Extension
      */
     protected $allowedTypes = array('default', 'warning', 'error', 'success', 'hint');
 
-    /*
-     * warning, error, success, hint
+    /**
+     * Generates an AUI Message.
      *
-     * default-icon: icon-generic
+     * @param string $type    Type of message, can be: default, warning, error, success or hint.
+     * @param string $title   The title of the message, can be null.
+     * @param string $message The message.
      *
-     * <div class="aui-message [warning]"
-     *  <p class="title">
-     *      <span class="aui-icon icon-generic"></span>
-     *      <strong>Backup Title</strong>
-     * </p>
-     * <p>message</p>
-     * </div>
+     * @throws \InvalidArgumentException
+     *
+     * @return string
      */
-
     public function generateMessage($type, $title, $message)
     {
         if (!in_array($type, $this->allowedTypes)) {
             throw new \InvalidArgumentException(sprintf('AUI Message only allows: %s - got "%s"', join(', ', $this->allowedTypes), $type));
         }
 
-        $title = (null !== $title) ? sprintf('<p class="title"><span class="aui-icon"></span>%s</p>', $title) : '';
+        $classes = (in_array($type, array('warning', 'error', 'success', 'hint'))) ? 'aui-icon icon-' . $type : 'aui-icon';
+        $title = (null !== $title) ? sprintf('<p class="title"><span class="%s"></span><strong>%s</strong></p>', $classes, $title) : '';
 
         return sprintf('<div class="%s">%s<p>%s</p></div>', 'aui-message', $title, $message);
     }
@@ -63,42 +61,6 @@ class AuiMessageExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'aui_message_extensions';
+        return 'aui_message_extension';
     }
-
-//    public function generateLozenge($text, $type = null, $subtle = false)
-//    {
-//        if (null !== $type && !in_array($type, $this->allowedTypes)) {
-//            $message = sprintf('AUI Lozenge allowes only: %s - got "%s"', join(', ', $this->allowedTypes), $type);
-//            throw new \InvalidArgumentException($message);
-//        }
-//
-//        $classes = trim(sprintf(
-//            'aui-lozenge %s %s',
-//            (null !== $type) ? 'aui-lozenge-' . $type : null,
-//            ($subtle) ? 'aui-lozenge-subtle' : null
-//        ));
-//
-//        return sprintf('<span class="%s">%s</span>', $classes, $text);
-//    }
-//
-//    /**
-//     * {@inheritDoc}
-//     * @return array
-//     */
-//    public function getFunctions()
-//    {
-//        return array(
-//            new \Twig_SimpleFunction('aui_lozenge', array($this, 'generateLozenge')),
-//        );
-//    }
-//
-//    /**
-//     * {@inheritDoc}
-//     * @return string
-//     */
-//    public function getName()
-//    {
-//        return 'aui_lozenges_extension';
-//    }
 }
