@@ -1,5 +1,0 @@
-mvhirsch_aui:
-    resource: "@mvhirschAuiBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
