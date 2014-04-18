@@ -37,3 +37,5 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
 * ApplicationHeader / MenuBundle
 * Rename AuiBundle -> AuiIntegrationBundle
 * Refactor directory structure (acutally its a full symfony project)
+* Add License (MIT?)
+* Remove shipped AUI v5.4.1, include a "install" script?
