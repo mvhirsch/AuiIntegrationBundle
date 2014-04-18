@@ -1,13 +1,16 @@
 {
-    "name": "mvhirsch/aui-integration-bundle",
-    "type": "symfony-bundle",
+    "name":    "mvhirsch/aui-integration-bundle",
+    "type":    "symfony-bundle",
+    "version": "1.0.0-dev",
+
     "description": "Integrats Atlassian User Interface",
-    "keywords": [],
+    "keywords": [ "AUI", "ADG", "Atlassian", "Twig", "Symfony2" ],
     "license": "MIT",
     "authors": [
         {
             "name": "Michael Hirschler",
-            "email": "michael.vhirsch@gmail.com"
+            "email": "michael.vhirsch@gmail.com",
+            "role": "developer"
         }
     ],
 
