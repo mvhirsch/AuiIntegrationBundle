@@ -1,25 +1,36 @@
 # mvhirsch/AuiBundle
-
 Integrates the Atlassian User Interface.
 Atlassian User Interface is licensed under Apache License v2.0.
-Is shipped with AUI v5.4.1.
 
-Please feel free to use and contribute to this project.
+This Bundle will not shipped with AUI.
+But you can still download the newest version under: [https://developer.atlassian.com/design/1.3/downloads/ "Download | Atlassian Design Guidelines"].
+Just download the flat pack and move the "aui"-folder into the public directory.
 
-## Dependencies
+## State of this project
+Because I'm very busy and I'm also not in need to write such a bundle, I *do not actively* develop this bundle.
+However, if you're in need of this bundle, send me an email and get in touch with me.
+
+If somebody want to use this bundle I'm willing to help - I promise.
+And of course, please feel free to use and contribute this project.
+
+## Installation
+* [https://developer.atlassian.com/design/1.3/downloads/ "AUI-Flat-Pack >=5.4.1"]
 * DomCrawler
 * Twig
 * Symfony ~2.x (2.4)
 
-## Twig Functions
-* `aui_badge(3)` // generates an AUI-Badge with content "3"
-* `aui_lozenge('test')` // generates an AUI-Lozenge with content "test" and default type
-* `aui_message('error', 'an error occured', 'there was an error while saving the form')` // generates an AUI-Message of type error
+## Run Tests
+Just run:
 
-## Installation
-Use `base.html.twig`
+`phpunit`
 
-## Change Page Layout
+## Using the AuiIntegrationBundle
+The AuiIntegrationBundle provides many helpers to get started fast with AUI.
+
+### Configuration
+Just use `base.html.twig` as your base template.
+
+### Change Page Layout
 As defined in ADG, you can use the following page layouts: fluid (default), hybrid and fixed.
 
     use mvhirsch\Bundle\AuiBundle\Configuration\Template
@@ -31,13 +42,25 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
      */
     public function AcmeIndexAction() {}
 
+### Twig Functions
+* `aui_badge(3)`
+generates an AUI-Badge with content "3"
 
-## ToDo
-* Template as Annotation
+* `aui_lozenge('test')`
+generates an AUI-Lozenge with content "test" and default type
+
+* `aui_message('error', 'an error occured', 'there was an error while saving the form')`
+generates an AUI-Message of type error
+
+* more coming ...
+
+### ToDo
+As mentioned above, this bundle lacks some core features.
+
+* -Template as Annotation-
 * Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annoation-Extra?)
 * AUI-Page Pagerfanta Integration
 * ApplicationHeader / MenuBundle
-* Rename AuiBundle -> AuiIntegrationBundle
-* Refactor directory structure (acutally its a full symfony project)
-* Add License (MIT?)
-* Remove shipped AUI v5.4.1, include a "install" script?
+* -Rename AuiBundle -> AuiIntegrationBundle-
+* -Include an install script to automatically provider AUI-
+* Add aui-flatpack as webcomponent to packagist and as a requirement to this bundle
