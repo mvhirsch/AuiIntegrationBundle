@@ -47,15 +47,15 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
 ### Twig Functions
 * `aui_badge(3)`
 
-...generates an AUI-Badge with content "3"
+   generates an AUI-Badge with content "3"
 
 * `aui_lozenge('test')`
 
-...generates an AUI-Lozenge with content "test" and default type
+   generates an AUI-Lozenge with content "test" and default type
 
 * `aui_message('error', 'an error occured', 'there was an error while saving the form')`
 
-...generates an AUI-Message of type error
+   generates an AUI-Message of type error
 
 * more coming ...
 
