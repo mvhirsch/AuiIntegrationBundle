@@ -1,8 +1,8 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Tests\Twig;
+namespace mvhirsch\AuiIntegrationBundle\Tests\Twig;
 
-use mvhirsch\Bundle\AuiBundle\Twig\AuiBadgeExtension;
+use mvhirsch\AuiIntegrationBundle\Twig\AuiBadgeExtension;
 use Symfony\Component\DomCrawler\Crawler;
 
 class AuiBadgeExtensionText extends \PHPUnit_Framework_TestCase

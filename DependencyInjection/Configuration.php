@@ -1,6 +1,6 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\DependencyInjection;
+namespace mvhirsch\AuiIntegrationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

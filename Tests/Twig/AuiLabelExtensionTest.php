@@ -1,8 +1,8 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Tests\Twig;
+namespace mvhirsch\AuiIntegrationBundle\Tests\Twig;
 
-use mvhirsch\Bundle\AuiBundle\Twig\AuiLabelExtension;
+use mvhirsch\AuiIntegrationBundle\Twig\AuiLabelExtension;
 
 /**
  * Description of AuiLabelExtensionTest

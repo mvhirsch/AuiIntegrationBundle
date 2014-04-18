@@ -6,7 +6,7 @@
 
     <!--
     <parameters>
-        <parameter key="mvhirsch_aui.example.class">mvhirsch\Bundle\AuiBundle\Example</parameter>
+        <parameter key="mvhirsch_aui.example.class">mvhirsch\AuiIntegrationBundle\Example</parameter>
     </parameters>
 
     <services>
@@ -19,8 +19,8 @@
     -->
 
     <parameters>
-        <parameter key="mvhirsch_aui.view.listener.class">mvhirsch\Bundle\AuiBundle\EventListener\TemplateListener</parameter>
-        <!--<parameter key="sensio_framework_extra.view.listener.class">mvhirsch\Bundle\AuiBundle\EventListener\TemplateListener</parameter>-->
+        <parameter key="mvhirsch_aui.view.listener.class">mvhirsch\AuiIntegrationBundle\EventListener\TemplateListener</parameter>
+        <!--<parameter key="sensio_framework_extra.view.listener.class">mvhirsch\AuiIntegrationBundle\EventListener\TemplateListener</parameter>-->
     </parameters>
 
     <services>

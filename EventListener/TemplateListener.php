@@ -1,6 +1,6 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\EventListener;
+namespace mvhirsch\AuiIntegrationBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -42,7 +42,7 @@ class TemplateListener implements EventSubscriberInterface
             return;
         }
 
-        if (get_class($configuration) === 'mvhirsch\Bundle\AuiBundle\Configuration\Template') {
+        if (get_class($configuration) === 'mvhirsch\AuiIntegrationBundle\Configuration\Template') {
             if ('focused' === $configuration->getLayout() && null === $configuration->getFocusedLayoutSize()) {
                 throw new \LogicException('Must set @Template::FocusedSize');
             }

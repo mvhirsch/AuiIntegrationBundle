@@ -1,15 +1,15 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Tests\Configuration;
+namespace mvhirsch\AuiIntegrationBundle\Tests\Configuration;
 
-use mvhirsch\Bundle\AuiBundle\Configuration\Template;
+use mvhirsch\AuiIntegrationBundle\Configuration\Template;
 
 class TemplateTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * System Under Test
      *
-     * @var mvhirsch\Bundle\AuiBundle\Configuration\Template
+     * @var mvhirsch\AuiIntegrationBundle\Configuration\Template
      */
     protected $SUT = null;
 
@@ -19,7 +19,7 @@ class TemplateTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->SUT = new Template(array());
-        $this->assertInstanceOf('mvhirsch\Bundle\AuiBundle\Configuration\Template', $this->SUT);
+        $this->assertInstanceOf('mvhirsch\AuiIntegrationBundle\Configuration\Template', $this->SUT);
     }
 
     /**

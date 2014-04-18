@@ -1,6 +1,6 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Twig;
+namespace mvhirsch\AuiIntegrationBundle\Twig;
 
 /**
  * Generates a Lozenge (AUI).

@@ -1,6 +1,6 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Configuration;
+namespace mvhirsch\AuiIntegrationBundle\Configuration;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as SymfonyTemplate;
 

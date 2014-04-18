@@ -1,12 +1,12 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Tests\EventListener;
+namespace mvhirsch\AuiIntegrationBundle\Tests\EventListener;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use mvhirsch\Bundle\AuiBundle\EventListener\TemplateListener;
-use mvhirsch\Bundle\AuiBundle\Configuration\Template;
+use mvhirsch\AuiIntegrationBundle\EventListener\TemplateListener;
+use mvhirsch\AuiIntegrationBundle\Configuration\Template;
 
 class TemplateListenerTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Controller;
+namespace mvhirsch\AuiIntegrationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use mvhirsch\Bundle\AuiBundle\Configuration\Template;
+use mvhirsch\AuiIntegrationBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {

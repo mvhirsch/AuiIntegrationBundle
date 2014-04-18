@@ -1,8 +1,8 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\Tests\Twig;
+namespace mvhirsch\AuiIntegrationBundle\Tests\Twig;
 
-use mvhirsch\Bundle\AuiBundle\Twig\AuiLozengesExtension;
+use mvhirsch\AuiIntegrationBundle\Twig\AuiLozengesExtension;
 use Symfony\Component\DomCrawler\Crawler;
 
 class AuiLozengesExtensionTest extends \PHPUnit_Framework_TestCase

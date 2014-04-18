@@ -1,6 +1,6 @@
 <?php
 
-namespace mvhirsch\Bundle\AuiBundle\DependencyInjection;
+namespace mvhirsch\AuiIntegrationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
