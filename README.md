@@ -4,6 +4,8 @@ Integrates the Atlassian User Interface.
 Atlassian User Interface is licensed under Apache License v2.0.
 Is shipped with AUI v5.4.1.
 
+Please feel free to use and contribute to this project.
+
 ## Dependencies
 * DomCrawler
 * Twig

@@ -1,0 +1,27 @@
+{
+    "name": "mvhirsch/aui-integration-bundle",
+    "type": "symfony-bundle",
+    "description": "Integrats Atlassian User Interface",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        { 
+            "name": "Michael Hirschler",
+            "email": "michael.vhirsch@gmail.com"
+        }
+    ],
+
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.3",
+        "symfony/dom-crawler": "~2.3",
+        "twig/twig": "~1.5"
+    },
+
+    "autoload": {
+        "psr-0": { "mvhirsch\\AuiIntegrationBundle": "" }
+    },
+
+    "target-dir": "mvhirsch/AuiIntegrationBundle"
+}
