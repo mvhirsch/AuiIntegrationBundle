@@ -65,15 +65,16 @@ class TemplateListener implements EventSubscriberInterface
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
         $request = $event->getRequest();
-        $vars = $request->attributes->get('_template_vars');
+        $parameters = $event->getControllerResult();
         $templating = $this->container->get('templating');
 
-        $parameters = array();
+        $vars = $request->attributes->get('_template_vars');
         foreach ($vars as $var) {
             $parameters[$var] = $request->attributes->get($var);
         }
 
-        $parameters['aui'] = ['page_layout' => $request->attributes->get('_template_vars_aui')['page_layout']];
+        $templateVarsAui = $request->attributes->get('_template_vars_aui');
+        $parameters['aui'] = array('page_layout' => $templateVarsAui['page_layout']);
 
         if (!$template = $request->attributes->get('_template')) {
             return $parameters;
