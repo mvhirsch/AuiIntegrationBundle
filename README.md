@@ -64,3 +64,4 @@ As mentioned above, this bundle lacks some core features.
 * ~~Rename AuiBundle -> AuiIntegrationBundle~~
 * ~~Include an install script to automatically provider AUI~~
 * Add aui-flatpack as webcomponent to packagist and as a requirement to this bundle
+* Add project to Travis-/Jenkins-CI
