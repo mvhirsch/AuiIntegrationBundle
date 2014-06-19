@@ -24,7 +24,7 @@
     "require-dev": {
         "symfony/css-selector": "~2.3"
     },
-    "target-dir": "mvhirsch/Bundle/AuiIntegrationBundle",
+    "target-dir": "mvhirsch/AuiIntegrationBundle",
     "autoload": {
         "psr-0": { "mvhirsch\\AuiIntegrationBundle": "" }
     }
