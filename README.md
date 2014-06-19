@@ -14,12 +14,6 @@ However, if you're in need of this bundle, send me an email and get in touch wit
 If somebody want to use this bundle I'm willing to help - I promise.
 And of course, please feel free to use and contribute this project.
 
-## Installation
-* [AUI-Flat-Pack >=5.4.1](https://developer.atlassian.com/design/1.3/downloads/)
-* DomCrawler
-* Twig
-* Symfony ~2.x (2.4)
-
 ## Run Tests
 Just run:
 
@@ -29,8 +23,9 @@ Just run:
 The AuiIntegrationBundle provides many helpers to get started fast with AUI.
 
 ### Configuration
-Add the AuiIntegrationBundle() to your AppKernel.
-And of course, use the `base.html.twig` as your base template.
+
+1. Add the AuiIntegrationBundle() to your AppKernel.
+2. Use the `{% extends "@Aui/layout.html.twig" %}` as to extend the AUI layout templates.
 
 ### Change Page Layout
 As defined in ADG, you can use the following page layouts: fluid (default), hybrid and fixed.
@@ -63,7 +58,7 @@ As defined in ADG, you can use the following page layouts: fluid (default), hybr
 As mentioned above, this bundle lacks some core features.
 
 * ~~Template as Annotation~~
-* Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annoation-Extra?)
+* Keyboard-Shortcut Configuration and linking with Controller-Actions (Expression-Language/Annotation-Extra?)
 * AUI-Page Pagerfanta Integration
 * ApplicationHeader / MenuBundle
 * ~~Rename AuiBundle -> AuiIntegrationBundle~~

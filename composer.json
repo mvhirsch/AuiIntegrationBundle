@@ -13,13 +13,28 @@
         }
     ],
     "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "atlassian/aui",
+                "version": "5.6.9",
+                "source": {
+                    "url": "https://bitbucket.org/atlassian/aui-dist.git",
+                    "type": "git",
+                    "reference": "tags/5.6.9"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "~2.3",
         "symfony/dom-crawler": "~2.3",
         "symfony/finder": "~2.3",
         "sensio/framework-extra-bundle": "~2.3",
-        "twig/twig": "~1.5"
+        "twig/twig": "~1.5",
+        "atlassian/aui": "5.6.9"
     },
     "require-dev": {
         "symfony/css-selector": "~2.3"
