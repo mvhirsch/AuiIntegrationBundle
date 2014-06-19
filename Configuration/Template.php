@@ -10,8 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as SymfonyTemplate
 class Template extends SymfonyTemplate
 {
     const AUI_LAYOUT_DEFAULT = 'fluid';
-    const AUI_LAYOUT_FLUID = 'fluid';
-    const AUI_LAYOUT_HYBRID = 'hybrid';
+    const AUI_LAYOUT_FLUID   = 'fluid';
+    const AUI_LAYOUT_HYBRID  = 'hybrid';
     const AUI_LAYOUT_FOCUSED = 'focused';
 
     const AUI_FOCUSED_LAYOUT_SIZE_LARGE = 'large';

@@ -1,8 +1,7 @@
 {
-    "name":    "mvhirsch/aui-integration-bundle",
-    "type":    "symfony-bundle",
+    "name": "mvhirsch/aui-integration-bundle",
+    "type": "symfony-bundle",
     "version": "1.0.0-dev",
-
     "description": "Integrats Atlassian User Interface",
     "keywords": [ "AUI", "ADG", "Atlassian", "Twig", "Symfony2" ],
     "license": "MIT",
@@ -13,24 +12,20 @@
             "role": "developer"
         }
     ],
-
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "~2.3",
         "symfony/dom-crawler": "~2.3",
-        "twig/twig": "~1.5",
+        "symfony/finder": "~2.3",
         "sensio/framework-extra-bundle": "~2.3",
-        "symfony/finder": "~2.3"
+        "twig/twig": "~1.5"
     },
-
     "require-dev": {
         "symfony/css-selector": "~2.3"
     },
-
+    "target-dir": "mvhirsch/Bundle/AuiIntegrationBundle",
     "autoload": {
         "psr-0": { "mvhirsch\\AuiIntegrationBundle": "" }
-    },
-
-    "target-dir": "mvhirsch/AuiIntegrationBundle"
+    }
 }
