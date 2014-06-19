@@ -14,33 +14,49 @@
         <body class="aui-layout aui-page-{{ aui.page_layout }}" data-aui-version="5.4.2">
     {% else %}
         <body class="aui-layout aui-page">
-        <body class="aui-layout aui-page-focused">
     {% endif %}
 
-        <div id="page">
-            <header id="header" role="banner"></header>
-            <section id="content" role="main">
-                <header class="aui-page-header">
-                    <div class="aui-page-header">
-                        <div class="aui-page-header-inner">
-                            <h1>Foundations</h1>
-                        </div>
-                    </div>
-                </header>
-
-                <div class="aui-page-panel">
-                    <div class="aui-page-panel-inner">
-                        <section class="aui-page-panel-content">
-                            {% block aui_body '' %}
-                        </section>
+    <div id="page">
+        <header id="header" role="banner"></header>
+        <section id="content" role="main">
+            <header class="aui-page-header">
+                <div class="aui-page-header">
+                    <div class="aui-page-header-inner">
+                        {% block content_header %}
+                            <ul id="menu">
+                                {% block content_header_more %}
+                                    <li><a href="{{ path('_demo') }}">Demo Home</a></li>
+                                {% endblock %}
+                            </ul>
+                        {% endblock %}
                     </div>
                 </div>
+            </header>
 
-            </section>
-            <footer id="footer" role="contentinfo"></footer>
-        </div>
+            <div class="aui-page-panel">
+                <div class="aui-page-panel-inner">
+                    <section class="aui-page-panel-content">
+                        {% for flashMessage in app.session.flashbag.get('notice') %}
+                            <div class="flash-message">
+                                <em>Notice</em>: {{ flashMessage }}
+                            </div>
+                        {% endfor %}
 
+                        {% block content %}{% endblock %}
 
+                        {% if code is defined %}
+                            <h2>Code behind this page</h2>
+                            <div class="block">
+                                <div class="symfony-content">{{ code|raw }}</div>
+                            </div>
+                        {% endif %}
+                    </section>
+                </div>
+            </div>
+
+        </section>
+        <footer id="footer" role="contentinfo"></footer>
+    </div>
 
     {% block javascripts %}{% endblock %}
     </body>
